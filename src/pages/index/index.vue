@@ -1,10 +1,8 @@
 <template>
 	<view class="content">
-		<!-- 搜索区 -->
-		<view class="search">
-			<input type="text">
-		</view>
-		
+    <!-- 搜索组件 -->
+		<search />
+    
 		<!-- 轮播图 -->
 		<swiper>
 			<swiper-item>
@@ -115,12 +113,16 @@
 </template>
 
 <script>
+import search from '@/components/search.vue'
 	export default {
 		data() {
 			return {
 				title: 'Hello'
 			}
-		},
+    },
+    components: {
+      search
+    },
 		onLoad() {
 
 		},
@@ -132,18 +134,6 @@
 
 <style lang="less" scoped>
 .content {
-	// 搜索区
-	.search {
-		background-color: #ff2d4a;
-		box-sizing: border-box;
-		padding: 20rpx 16rpx;
-		input {
-			width: 100%;
-			height: 60rpx;
-			background-color: #fff;
-			border-radius: 5rpx;
-		}
-	}
 
 	// 轮播图
 	swiper {
