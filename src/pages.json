@@ -5,6 +5,12 @@
 			"style": {
 				"navigationBarTitleText": "主页"
 			}
+		},
+		{
+			"path": "pages/category/index",
+			"style": {
+				"navigationBarTitleText": "分类"
+			}
 		}
 	],
 	"globalStyle": {
@@ -26,7 +32,7 @@
 			},
 			{
 				"text": "分类",
-				"pagePath": "pages/index/index",
+				"pagePath": "pages/category/index",
 				"iconPath": "static/tabs/icon_category@3x.png",
 				"selectedIconPath": "static/tabs/icon_category_active@3x.png"
 			}, {

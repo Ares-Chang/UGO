@@ -1,7 +1,7 @@
 <template>
-	<view class="content">
+	<view class="content" :style="{'height':height,'overflow':'hidden'}">
     <!-- 搜索组件 -->
-		<search />
+		<search @windowHeight="windowHeight" />
     
 		<!-- 轮播图 -->
 		<swiper>
@@ -117,7 +117,7 @@ import search from '@/components/search.vue'
 	export default {
 		data() {
 			return {
-				title: 'Hello'
+				height: 'auto'
 			}
     },
     components: {
@@ -127,7 +127,11 @@ import search from '@/components/search.vue'
 
 		},
 		methods: {
-
+      // 子类传递的搜索框高度
+      windowHeight(e) {
+        // console.log(e)
+        this.height = e + 'px'
+      }
 		}
 	}
 </script>
