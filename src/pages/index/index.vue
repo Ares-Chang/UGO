@@ -3,19 +3,9 @@
     <search @search="disableScroll" />
     <!-- 焦点图 -->
     <swiper class="banner" indicator-dots indicator-color="rgba(255, 255, 255, 0.6)" indicator-active-color="#fff">
-      <swiper-item>
+      <swiper-item v-for="item in swiperData" :key="item.goods_id">
         <navigator url="/pages/goods/index">
-          <image src="http://static.botue.com/ugo/uploads/banner1.png"></image>
-        </navigator>
-      </swiper-item>
-      <swiper-item>
-        <navigator url="/pages/goods/index">
-          <image src="http://static.botue.com/ugo/uploads/banner2.png"></image>
-        </navigator>
-      </swiper-item>
-      <swiper-item>
-        <navigator url="/pages/goods/index">
-          <image src="http://static.botue.com/ugo/uploads/banner3.png"></image>
+          <image :src="item.image_src"></image>
         </navigator>
       </swiper-item>
     </swiper>
@@ -115,7 +105,8 @@
 
     data () {
       return {
-        pageHeight: 'auto'
+        pageHeight: 'auto',
+        swiperData: []
       }
     },
 
@@ -126,7 +117,20 @@
     methods: {
       disableScroll (ev) {
         this.pageHeight = ev.pageHeight + 'px';
+      },
+      // 获取轮播图数
+      async getSwiperList() {
+        let [err, res] = await uni.request({
+          url: "https://api-ugo-web.itheima.net/api/public/v1/home/swiperdata"
+        })
+        console.log(res)
+        this.swiperData = res.data.message
       }
+    },
+    // 页面加载时候请求
+    onLoad() {
+      // 获取轮播图数据
+      this.getSwiperList()
     }
   }
 </script>
