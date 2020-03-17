@@ -120,11 +120,11 @@
       },
       // 获取轮播图数
       async getSwiperList() {
-        let [err, res] = await uni.request({
-          url: "https://api-ugo-web.itheima.net/api/public/v1/home/swiperdata"
+        const {message} = await this.request({
+          url: '/api/public/v1/home/swiperdata'
         })
-        console.log(res)
-        this.swiperData = res.data.message
+        // console.log(message)
+        this.swiperData = message
       }
     },
     // 页面加载时候请求
